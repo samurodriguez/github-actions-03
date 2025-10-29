@@ -12,5 +12,7 @@ jobs:
         with:
           key: npm-cache-${{ hashFiles('package-lock.json') }}
           path: ~/.npm
+          restore-keys: |
+            npm-cache-
       - name: install dependencies
         run: npm ci
