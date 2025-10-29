@@ -1,0 +1,16 @@
+name: "npm cache"
+on: workflow_dispatch
+jobs:
+  npm-install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        with:
+          key: npm-cache
+          path: ~/.npm
+      - name: install dependencies
+        run: npm ci
