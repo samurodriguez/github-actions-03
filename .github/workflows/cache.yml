@@ -17,7 +17,7 @@ jobs:
       - name: log if cache hits
         run: echo ${{ steps.cache.outputs.cache-hit }}
       - name: init process
-        # if:
+        if: steps.cache.outputs.cache-hit != true
         run: node process.mjs
       - name: log output
         run: cat ./output.txt
