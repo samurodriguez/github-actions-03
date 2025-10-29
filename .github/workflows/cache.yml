@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
       - name: get process output cache
         id: cache
         uses: actions/cache@v4
@@ -13,6 +16,8 @@ jobs:
           key: process-output
       - name: log if cache hits
         run: echo ${{ steps.cache.outputs.cache-hit }}
-      # - name: init process
-      #   if:
-      #   run: node process.mjs
+      - name: init process
+        # if:
+        run: node process.mjs
+      - name: log output
+        run: cat ./output.txt
